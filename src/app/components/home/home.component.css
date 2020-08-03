@@ -1,0 +1,25 @@
+.three-boxes {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+}
+
+.three-boxes div {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  text-align: center;
+}
+
+
+.three-boxes .first-box {
+  background-color: red;
+}
+
+.three-boxes .second-box {
+  background-color: orange;
+}
+
+.three-boxes .third-box {
+  background-color: pink;
+}

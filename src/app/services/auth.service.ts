@@ -18,12 +18,12 @@ export class AuthService {
   constructor(private _httpClient: HttpClient) { }
 
   getUser() {
-    return this._httpClient.get(`/users/list`)
+    return this._httpClient.get(`users/list`)
       .pipe(catchError(this.handleError))
   }
 
   addUser(user) {
-    return this._httpClient.post(`/users/register`, user, {
+    return this._httpClient.post(`users/register`, user, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
@@ -32,7 +32,7 @@ export class AuthService {
   }
 
   authenticateUser(user) {
-    return this._httpClient.post(`/users/authenticate`, user, {
+    return this._httpClient.post(`users/authenticate`, user, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
@@ -42,7 +42,7 @@ export class AuthService {
 
   getProfile() {
     this.loadToken();
-    return this._httpClient.get(`/users/profile`, {
+    return this._httpClient.get(`users/profile`, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'Authorization': this.authToken

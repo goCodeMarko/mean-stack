@@ -13,17 +13,17 @@ import { JwtHelperService } from "@auth0/angular-jwt";
 export class AuthService {
   public authToken: any;
   public account: any;
-  // public baseUrl: string = "http://localhost:5444";
+  public baseUrl: string = "http://localhost:5444";
 
   constructor(private _httpClient: HttpClient) { }
 
   getUser() {
-    return this._httpClient.get(`users/list`)
+    return this._httpClient.get(`${this.baseUrl}/users/list`)
       .pipe(catchError(this.handleError))
   }
 
   addUser(user) {
-    return this._httpClient.post(`users/register`, user, {
+    return this._httpClient.post(`${this.baseUrl}/users/register`, user, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
@@ -32,7 +32,7 @@ export class AuthService {
   }
 
   authenticateUser(user) {
-    return this._httpClient.post(`users/authenticate`, user, {
+    return this._httpClient.post(`${this.baseUrl}/users/authenticate`, user, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
@@ -42,7 +42,7 @@ export class AuthService {
 
   getProfile() {
     this.loadToken();
-    return this._httpClient.get(`users/profile`, {
+    return this._httpClient.get(`${this.baseUrl}/users/profile`, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'Authorization': this.authToken
